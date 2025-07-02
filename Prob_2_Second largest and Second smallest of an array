@@ -1,0 +1,40 @@
+# Second Max
+
+class Solution:
+    def getSecondLargest(self, arr):
+        n = len(arr)
+        Largest = arr[0]
+        sLargest = -1  # Assumes non-negative input
+
+        for i in range(1, n):
+            if arr[i] > Largest:
+                sLargest = Largest
+                Largest = arr[i]
+            elif arr[i] < Largest and arr[i] > sLargest:
+                sLargest = arr[i]
+
+        return sLargest
+
+# Second Min
+
+class Solution:
+    def minAnd2ndMin(self, arr):
+        n = len(arr)
+        if n < 2:
+            return [-1]
+
+        smallest = float('inf')
+        second_smallest = float('inf')
+
+        for num in arr:
+            if num < smallest:
+                second_smallest = smallest
+                smallest = num
+            elif num != smallest and num < second_smallest:
+                second_smallest = num
+
+        if second_smallest == float('inf'):
+            return [-1]
+
+        return [smallest, second_smallest]
+
